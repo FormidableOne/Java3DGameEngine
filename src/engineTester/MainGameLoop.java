@@ -1,10 +1,21 @@
 package engineTester;
-
+/**
+ * 	Name: Ken Mascarenas
+ * 	Web Site: http://cryosoftdesigns.com
+ * 	Email: admin@cryosoftdesigns.com
+ * 	Date: 23 December 2014
+ * 	Project: Java 3D Game Engine
+ * 	Version: 0.0.1a
+ * 	Credit: Huge thanks to the following people who have helped
+ * 			contribute to this project in one way or another:
+ * 			Zack - RealTutsGML @ YouTube
+ * 			ThinMatrix 
+ * 				- ThinMatrix @ Twitter
+ * 				- ThinMatrix @ YouTube
+ */
 import models.RawModel;
 import models.TexturedModel;
-
 import org.lwjgl.opengl.Display;
-
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.Renderer;
@@ -45,6 +56,7 @@ public class MainGameLoop {
 		TexturedModel texturedModel = new TexturedModel(model, texture);
 		
 		while(!Display.isCloseRequested()) {
+			
 			// Game Logic
 			renderer.prepare();
 			// Rendering

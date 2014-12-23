@@ -40,4 +40,8 @@ $RECYCLE.BIN/
 .AppleDesktop
 Network Trash Folder
 Temporary Items
+/bin/
 .apdisk
+
+# Stuff I just don't want included
+.classpath
