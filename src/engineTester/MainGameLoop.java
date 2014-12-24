@@ -21,9 +21,8 @@ import org.lwjgl.util.vector.Vector3f;
 
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
+import renderEngine.MasterRenderer;
 import renderEngine.OBJLoader;
-import renderEngine.Renderer;
-import shaders.StaticShader;
 import textures.ModelTexture;
 import entities.Camera;
 import entities.Entity;
@@ -35,45 +34,36 @@ public class MainGameLoop {
 		
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
-		StaticShader shader = new StaticShader();
-		Renderer renderer = new Renderer(shader);
 		
-		// OpenGL expects vertices to be defined counter-clockwise by default
-		
-		
+		// Setting up Entity to render in renderer
 		RawModel model = OBJLoader.loadObjModel("dragon", loader);
-		
 		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("dragonTexture")));
-		
 		ModelTexture texture = staticModel.getTexture();
-		texture.setShineDamper(30);
+		texture.setShineDamper(150);
 		texture.setReflectivity(1);
-		
 		Entity entity = new Entity(staticModel, new Vector3f(0,-5,-30),0,0,0,1);
 		
-		Light light = new Light(new Vector3f(-15,10,-25), new Vector3f(1,1,1));
-		
+		// Setting up lights(sun) with positioning and camera
+		Light light = new Light(new Vector3f(0,0,-25), new Vector3f(1,1,1));
 		Camera camera = new Camera();
 		
+		// Creating renderer then rendering
+		MasterRenderer renderer = new MasterRenderer();
 		while(!Display.isCloseRequested()) {
-			entity.increaseRotation(0,1,0);
-			camera.move();
-			// Game Logic
-			renderer.prepare();
-			// Rendering
-			shader.start();
-			shader.loadLight(light);
-			shader.loadViewMatrix(camera);
-			renderer.render(entity,shader);
-			shader.stop();
-			DisplayManager.updateDisplay();
 			
+			// Game Logic
+			camera.move();
+			entity.increaseRotation(0, 0.65f, 0);
+			
+			// Rendering
+			renderer.processEntity(entity);
+			renderer.render(light, camera);
+			DisplayManager.updateDisplay();	
 		}
 		
-		shader.cleanUp();
+		renderer.cleanUp();
 		loader.cleanUp();
 		DisplayManager.closeDisplay();
-
 	}
 
 }
