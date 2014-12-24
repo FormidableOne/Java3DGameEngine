@@ -27,6 +27,7 @@ import shaders.StaticShader;
 import textures.ModelTexture;
 import entities.Camera;
 import entities.Entity;
+import entities.Light;
 
 public class MainGameLoop {
 
@@ -40,11 +41,13 @@ public class MainGameLoop {
 		// OpenGL expects vertices to be defined counter-clockwise by default
 		
 		
-		RawModel model = OBJLoader.loadObjModel("stall", loader);
+		RawModel model = OBJLoader.loadObjModel("dragon", loader);
 		
-		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("stallTexture")));
+		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("dragonTexture")));
 		
-		Entity entity = new Entity(staticModel, new Vector3f(0,0,-50),0,0,0,1);
+		Entity entity = new Entity(staticModel, new Vector3f(0,-5,-30),0,0,0,1);
+		
+		Light light = new Light(new Vector3f(0,0,-25), new Vector3f(1,1,1));
 		
 		Camera camera = new Camera();
 		
@@ -55,6 +58,7 @@ public class MainGameLoop {
 			renderer.prepare();
 			// Rendering
 			shader.start();
+			shader.loadLight(light);
 			shader.loadViewMatrix(camera);
 			renderer.render(entity,shader);
 			shader.stop();
