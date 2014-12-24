@@ -77,7 +77,6 @@ public class Terrain {
 		}
 		
 		return loader.loadToVAO(vertices, textureCoords, normals, indices);
-		
 	}
 	
 }

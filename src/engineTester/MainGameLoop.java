@@ -42,13 +42,13 @@ public class MainGameLoop {
 		ModelTexture texture = staticModel.getTexture();
 		texture.setShineDamper(150);
 		texture.setReflectivity(1);
-		Entity entity = new Entity(staticModel, new Vector3f(-10,-0.0001f,-350),0,0,0,1);
+		Entity entity = new Entity(staticModel, new Vector3f(20,0,-5),0,0,0,1);
 		
 		// Setting up lights(sun) with positioning and camera
-		Light light = new Light(new Vector3f(1000,500,500), new Vector3f(1,1,1));
+		Light light = new Light(new Vector3f(2000,1000,1000), new Vector3f(1,1,1));
 		
-		Terrain terrain = new Terrain(0,-1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain2 = new Terrain(1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
+		Terrain terrain = new Terrain(0,0,loader,new ModelTexture(loader.loadTexture("grass")));
+		Terrain terrain2 = new Terrain(1,0,loader,new ModelTexture(loader.loadTexture("grass")));
 		
 		Camera camera = new Camera();
 		
@@ -58,8 +58,8 @@ public class MainGameLoop {
 			
 			// Game Logic
 			camera.move();
-			entity.increaseRotation(0, 3, 0);
-			entity.increasePosition(0.04f, 0, 0.3f);
+			entity.increaseRotation(0,0.75f,0);
+			entity.increasePosition(0,0,0);
 			
 			// Rendering
 			renderer.processTerrain(terrain);
