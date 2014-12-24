@@ -23,6 +23,7 @@ import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
 import renderEngine.OBJLoader;
+import terrains.Terrain;
 import textures.ModelTexture;
 import entities.Camera;
 import entities.Entity;
@@ -41,10 +42,14 @@ public class MainGameLoop {
 		ModelTexture texture = staticModel.getTexture();
 		texture.setShineDamper(150);
 		texture.setReflectivity(1);
-		Entity entity = new Entity(staticModel, new Vector3f(0,-5,-30),0,0,0,1);
+		Entity entity = new Entity(staticModel, new Vector3f(-10,-0.0001f,-350),0,0,0,1);
 		
 		// Setting up lights(sun) with positioning and camera
-		Light light = new Light(new Vector3f(0,0,-25), new Vector3f(1,1,1));
+		Light light = new Light(new Vector3f(1000,500,500), new Vector3f(1,1,1));
+		
+		Terrain terrain = new Terrain(0,-1,loader,new ModelTexture(loader.loadTexture("grass")));
+		Terrain terrain2 = new Terrain(1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
+		
 		Camera camera = new Camera();
 		
 		// Creating renderer then rendering
@@ -53,9 +58,12 @@ public class MainGameLoop {
 			
 			// Game Logic
 			camera.move();
-			entity.increaseRotation(0, 0.65f, 0);
+			entity.increaseRotation(0, 3, 0);
+			entity.increasePosition(0.04f, 0, 0.3f);
 			
 			// Rendering
+			renderer.processTerrain(terrain);
+			renderer.processTerrain(terrain2);
 			renderer.processEntity(entity);
 			renderer.render(light, camera);
 			DisplayManager.updateDisplay();	
