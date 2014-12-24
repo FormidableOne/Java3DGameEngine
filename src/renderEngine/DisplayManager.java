@@ -32,7 +32,7 @@ public class DisplayManager {
 		try {	
 			Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
 			Display.create(new PixelFormat(), attribs);
-			Display.setTitle("First Display!");
+			Display.setTitle("3D Java Engine Test");
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
