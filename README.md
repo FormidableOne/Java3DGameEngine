@@ -9,8 +9,16 @@ Below are two screenshots demonstrating recent additions to the engine, specific
 
 Thanks for visiting!
 
-Ken
+-KJ
 
-![Current Progress 2](http://i.imgur.com/gl6bDah.jpg)
+#Screenshots:
 
-![Current Progress 1](http://i.imgur.com/R1iIAOB.jpg)
+####Without Spectral Lighting:
+
+![Without Spectral Lighting 1](http://i.imgur.com/gl6bDahl.jpg)
+![Without Spectral Lighting 2](http://i.imgur.com/R1iIAOBl.jpg)
+
+####With Spectral Lighting Implemented:
+![Current Spectral Lighting 1](http://i.imgur.com/gZyE7Gql.jpg)
+![Current Spectral Lighting 2](http://i.imgur.com/pG4M8RXl.jpg)
+![Current Spectral Lighting 3](http://i.imgur.com/hw7IceUl.jpg)
