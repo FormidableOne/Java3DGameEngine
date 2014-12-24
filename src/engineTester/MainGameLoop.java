@@ -45,9 +45,13 @@ public class MainGameLoop {
 		
 		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("dragonTexture")));
 		
+		ModelTexture texture = staticModel.getTexture();
+		texture.setShineDamper(30);
+		texture.setReflectivity(1);
+		
 		Entity entity = new Entity(staticModel, new Vector3f(0,-5,-30),0,0,0,1);
 		
-		Light light = new Light(new Vector3f(0,0,-25), new Vector3f(1,1,1));
+		Light light = new Light(new Vector3f(-15,10,-25), new Vector3f(1,1,1));
 		
 		Camera camera = new Camera();
 		
