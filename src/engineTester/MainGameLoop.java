@@ -19,8 +19,8 @@ import java.util.Random;
 
 import models.RawModel;
 import models.TexturedModel;
-import objConverter.ModelData;
-import objConverter.OBJFileLoader;
+//import objConverter.ModelData;
+//import objConverter.OBJFileLoader;
 
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
@@ -43,7 +43,6 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		
 		// Setting up Entity to render in renderer
-		
 		/* This is how to add an object with the new parser
 		 * 
 		ModelData data = OBJFileLoader.loadOBJ("tree");
