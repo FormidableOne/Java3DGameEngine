@@ -6,7 +6,7 @@ import textures.ModelTexture;
 
 public class Terrain {
 	
-	private static final float SIZE = 800;
+	private static final float SIZE = 410;
 	private static final int VERTEX_COUNT = 256;
 	
 	private float x;
@@ -44,7 +44,6 @@ public class Terrain {
 		float[] textureCoords = new float[count*2];
 		int[] indices = new int[6*(VERTEX_COUNT-1)*(VERTEX_COUNT*1)];
 		int vertexPointer = 0;
-		
 		for(int i=0;i<VERTEX_COUNT;i++){
 			for(int j=0;j<VERTEX_COUNT;j++){
 				vertices[vertexPointer*3] = (float)j/((float)VERTEX_COUNT - 1) * SIZE;
