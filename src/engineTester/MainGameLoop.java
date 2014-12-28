@@ -19,8 +19,7 @@ import java.util.Random;
 
 import models.RawModel;
 import models.TexturedModel;
-//import objConverter.ModelData;
-//import objConverter.OBJFileLoader;
+import objConverter.OBJFileLoader;
 
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
@@ -43,11 +42,12 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		
 		// Setting up Entity to render in renderer
-		/* This is how to add an object with the new parser
-		 * 
-		ModelData data = OBJFileLoader.loadOBJ("tree");
-		RawModel treeModel = loader.loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices());
-		*/
+		
+		/*ModelData data = OBJFileLoader.loadOBJ("bunny");
+		RawModel bunny = loader.loadToVAO(data.getVertices(), data.getTextureCoords(),
+				data.getNormals(), data.getIndices());
+		TexturedModel bunnyModel = new TexturedModel(bunny, new ModelTexture(
+				loader.loadTexture("white")));*/
 		
 		RawModel model = OBJLoader.loadObjModel("tree", loader);
 		
@@ -63,7 +63,7 @@ public class MainGameLoop {
 		
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
-		for(int i=0; i<500; i++) {
+		for(int i=0; i<400; i++) {
 			entities.add(new Entity(staticModel, new Vector3f(random.nextFloat() * 800 - 400,
 					0, random.nextFloat() * -600), 0, 0, 0, 3));
 			entities.add(new Entity(grass, new Vector3f(random.nextFloat() * 800 - 400, 0,
